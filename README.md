@@ -96,7 +96,7 @@ kubectl delete pod nginx
 
 # check scale
 kubectl run php-apache --image=gcr.io/google_containers/hpa-example --requests=cpu=500m,memory=500M --expose --port=80
-kubectl autoscale deployment php-apache --cpu-percent=50 --min=10 --max=20
+kubectl autoscale deployment php-apache --cpu-percent=90 --min=10 --max=20
 watch -n 10 -d "kubectl get hpa; kubectl get pods; cfy executions list"
 
 # stop scale
