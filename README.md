@@ -130,9 +130,15 @@ cfy-go node-instances host-grouped
 `CLOUDPROVIDER` can be `aws` or `vsphere`.
 
 ```shell
+# upload
 git clone https://github.com/cloudify-incubator/cloudify-kubernetes-provider.git -b master --depth 1
 cd cloudify-rest-go-client
 CLOUDPROVIDER=aws make upload
 cfy deployments create kubernetes_cluster -b kubernetes_cluster -i ../kubenetes.yaml --skip-plugins-validation
 cfy executions start install -d kubernetes_cluster
+
+#delete
+cfy executions start uninstall  -p ignore_failure=true --allow-custom-parameters -d kubernetes_cluster
+cfy deployments delete kubernetes_cluster
+cfy blueprints delete kubernetes_cluster
 ```

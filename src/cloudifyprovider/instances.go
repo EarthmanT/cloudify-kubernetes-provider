@@ -127,6 +127,7 @@ func (r *Instances) NodeAddressesByProviderID(providerID string) ([]api.NodeAddr
 
 	addresses := []api.NodeAddress{}
 
+	// hostname
 	for _, nodeInstance := range nodeInstances {
 		// check runtime properties
 		if nodeInstance.RuntimeProperties != nil {
@@ -141,7 +142,13 @@ func (r *Instances) NodeAddressesByProviderID(providerID string) ([]api.NodeAddr
 					}
 				}
 			}
+		}
+	}
 
+	// internal ip
+	for _, nodeInstance := range nodeInstances {
+		// check runtime properties
+		if nodeInstance.RuntimeProperties != nil {
 			if v, ok := nodeInstance.RuntimeProperties["ip"]; ok == true {
 				switch v.(type) {
 				case string:
@@ -153,7 +160,13 @@ func (r *Instances) NodeAddressesByProviderID(providerID string) ([]api.NodeAddr
 					}
 				}
 			}
+		}
+	}
 
+	// external ip
+	for _, nodeInstance := range nodeInstances {
+		// check runtime properties
+		if nodeInstance.RuntimeProperties != nil {
 			if v, ok := nodeInstance.RuntimeProperties["public_ip"]; ok == true {
 				switch v.(type) {
 				case string:
