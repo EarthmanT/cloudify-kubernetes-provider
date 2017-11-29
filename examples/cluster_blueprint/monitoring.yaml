@@ -293,3 +293,39 @@ node_templates:
       type: cloudify.relationships.contained_in
     - type: cloudify.relationships.depends_on
       target: heapster_service
+
+#  heapster_rbac:
+#    type: cloudify.kubernetes.resources.RoleDefinedResource
+#    properties:
+#      api_mapping:
+#        create:
+#          api: RbacAuthorizationV1Api
+#          method: create_namespaced_role_binding
+#          payload: V1RoleBinding
+#        read:
+#          api: RbacAuthorizationV1Api
+#          method: read_namespaced_role_binding
+#        delete:
+#          api: RbacAuthorizationV1Api
+#          method: delete_namespaced_role_binding
+#          payload: V1DeleteOptions
+#      definition:
+#        kind: ClusterRoleBinding
+#        apiVersion: rbac.authorization.k8s.io/v1beta1
+#        metadata:
+#          name: heapster
+#        roleRef:
+#          apiGroup: rbac.authorization.k8s.io
+#          kind: ClusterRole
+#          name: system:heapster
+#        subjects:
+#        - kind: ServiceAccount
+#          name: heapster
+#          namespace: kube-system
+#    relationships:
+#    - type: cloudify.kubernetes.relationships.managed_by_master
+#      target: kube
+#    - type: cloudify.relationships.depends_on
+#      target: heapster_service_account
+#    - type: cloudify.relationships.depends_on
+#      target: heapster_service
