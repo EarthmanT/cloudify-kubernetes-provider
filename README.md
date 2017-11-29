@@ -1,7 +1,14 @@
-# cloudify-rest-go-client
+# Cloudify Cloud Controller Manager
 
-* Install [GO on CentOs](examples/blueprint/scripts/tools-install.sh#L8-L12)
-* Install [GO on Ubuntu](examples/blueprint/scripts/tools-install.sh#L14-L17)
+We use `git submodule` instead common practice of vendoring because it has one big advantage
+we can use `git merge` for update code base for support new version of kubernetes.
+We are trying to use only addtional code instead replace and you always can check
+'what is the last merged version' and how we connect to cloudify.
+So theoretically you can build kubernetes binaries from repository, but we have no
+garanties for such usage. And when we will have ability to attach our code as plugin
+to kubernetes product we will drop all kubernetes forks and use only official repositories
+[(near 1.9+?)](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/cloud-provider/cloud-provider-refactoring.md)
+
 
 # git (Disc Usage: 699-872Mb)
 ```shell
