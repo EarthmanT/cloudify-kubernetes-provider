@@ -149,3 +149,10 @@ test:
 	golint ./src/${KUBERNETESPACKAGE}/...
 	golint ./src/cfy-kubernetes.go
 	golint ./src/${AUTOSCALEPACKAGE}/cloudifyprovider/...
+
+	cfy blueprint validate examples/cluster_blueprint/aws.yaml
+	cfy blueprint validate examples/cluster_blueprint/azure.yaml
+	cfy blueprint validate examples/cluster_blueprint/gcp.yaml
+	cfy blueprint validate examples/cluster_blueprint/openstack.yaml
+	cfy blueprint validate examples/cluster_blueprint/vsphere.yaml
+
