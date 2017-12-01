@@ -105,26 +105,6 @@ watch -n 10 -d "kubectl get hpa; kubectl get pods; cfy executions list; kubectl 
 kubectl delete hpa php-apache
 kubectl delete deployment php-apache
 
-# check limits for scaling group
-cfy-go deployments scaling-groups -deployment kubernetes_cluster
-
-# check nodes in group - recheck code used in get scaling group by instance(hostname) in autoscale
-cfy-go scaling-groups groups -deployment kubernetes_cluster
-
-# check nodes in group in autoscale, check that we have node in scaling group
-cfy-go scaling-groups nodes -deployment kubernetes_cluster -scalegroup k8s_node_scale_group
-
-# check instances in group in autoscale
-cfy-go scaling-groups instances -deployment kubernetes_cluster -scalegroup k8s_node_scale_group
-
-# check visible instances in deployment (all) in cloudify provider (without filter by scaling group)
-cfy-go node-instances started -deployment kubernetes_cluster
-
-# check visible nodes in deployment (all) in cloudify provider (without filter by scaling group)
-cfy-go nodes started -deployment kubernetes_cluster
-
-# list instances grouped by hostID
-cfy-go node-instances host-grouped
 ```
 
 ## Upload blueprint to manager (without build sources)
