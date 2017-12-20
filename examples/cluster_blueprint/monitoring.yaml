@@ -214,6 +214,9 @@ node_templates:
         read:
           api: CoreV1Api
           method: read_namespaced_service_account
+        update:
+          api: CoreV1Api
+          method: replace_namespaced_service_account
         delete:
           api: CoreV1Api
           method: delete_namespaced_service_account
